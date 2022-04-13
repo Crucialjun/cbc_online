@@ -15,10 +15,11 @@ class OnboardingpageView extends StatelessWidget {
         child: PageView(
           controller: pageController,
           children: [
-            viewpage("assets/gifs/viewpage.gif", "Learning Made Easy", lorem),
-            viewpage("assets/gifs/viewpagetwo.gif", "Learning Made Fun", lorem),
-            viewpage("assets/gifs/viewpage.gif", "Learning Made Easy", lorem),
-            viewpage("assets/gifs/viewpage.gif", "Learning Made Easy", lorem),
+            viewpage("gifs/viewpage.gif", "Learning Made Easy", lorem),
+            viewpage("gifs/viewpagetwo.gif", "Learning Made Fun", lorem),
+            viewpage("gifs/viewpagethree.gif", "Learning Made Easy", lorem),
+            viewpage("gifs/viewpagefour.gif", "Learning Made Easy", lorem),
+            viewpage("gifs/viewpagefive.gif", "Learning Made Easy", lorem),
           ],
         ),
       ),
