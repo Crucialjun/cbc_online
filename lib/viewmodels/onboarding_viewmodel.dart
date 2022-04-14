@@ -4,6 +4,8 @@ import 'package:cbc_online/models/onboarding_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
+import '../gen/assets.gen.dart';
+
 class OnboardingViewModel extends ChangeNotifier {
   OnboardingViewModel() {
     getItems();
@@ -18,8 +20,7 @@ class OnboardingViewModel extends ChangeNotifier {
   int get currentPosition => _currentPostion;
 
   Future getItems() async {
-    var listOfJsons =
-        await rootBundle.loadString("assets/jsons/onboarding_data.json");
+    var listOfJsons = await rootBundle.loadString(Assets.jsons.onboardingData);
     List decodedJson = jsonDecode(listOfJsons);
 
     for (var i = 0; i < decodedJson.length; i++) {
