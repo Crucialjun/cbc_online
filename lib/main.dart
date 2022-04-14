@@ -1,9 +1,17 @@
 import 'package:cbc_online/global_constants.dart';
 import 'package:cbc_online/screens/onboarding_screen.dart';
+import 'package:cbc_online/viewmodels/onboarding_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(
+        create: (_) => OnboardingViewModel(),
+      )
+    ], child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

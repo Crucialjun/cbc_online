@@ -1,5 +1,7 @@
-import 'package:cbc_online/global_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../viewmodels/onboarding_viewmodel.dart';
 
 class OnboardingpageView extends StatelessWidget {
   const OnboardingpageView({Key? key, required this.pageController})
@@ -9,20 +11,17 @@ class OnboardingpageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List onboardingItems = context.watch<OnboardingViewModel>().onboardingItems;
     return Container(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: PageView(
-          controller: pageController,
-          children: [
-            viewpage("gifs/viewpage.gif", "Learning Made Easy", lorem),
-            viewpage("gifs/viewpagetwo.gif", "Learning Made Fun", lorem),
-            viewpage("gifs/viewpagethree.gif", "Learning Made Easy", lorem),
-            viewpage("gifs/viewpagefour.gif", "Learning Made Easy", lorem),
-            viewpage("gifs/viewpagefive.gif", "Learning Made Easy", lorem),
-          ],
-        ),
-      ),
+          padding: const EdgeInsets.all(16.0),
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: onboardingItems.length,
+              itemBuilder: (context, index) {
+                return viewpage(onboardingItems[index].assetName,
+                    onboardingItems[index].title, onboardingItems[index].text);
+              })),
     );
   }
 
@@ -32,7 +31,7 @@ class OnboardingpageView extends StatelessWidget {
       child: Column(children: [
         Expanded(
           child: Image.asset(
-            asset,
+            "gifs/$asset.gif",
           ),
         ),
         Text(

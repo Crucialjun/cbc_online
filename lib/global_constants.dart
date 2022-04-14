@@ -6,5 +6,5 @@ String lorem =
 //Onboarding data
 String onboardingTableName = "Onboarding";
 String onboardingTitle = "Title";
-String assetName = "assetname";
-String text = "Text";
+String onboradingAssetName = "AssetName";
+String onboardingText = "Text";

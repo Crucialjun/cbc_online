@@ -1,7 +1,9 @@
 import 'package:cbc_online/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../viewmodels/onboarding_viewmodel.dart';
 import '../widgets/onboarding_page_view.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -13,8 +15,10 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
+    List onboardingItems = context.watch<OnboardingViewModel>().onboardingItems;
     return Scaffold(
         body: Container(
       child: Padding(
@@ -40,7 +44,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 SmoothPageIndicator(
                     effect: const SlideEffect(activeDotColor: appPrimaryColor),
                     controller: _pageController,
-                    count: 4),
+                    count:
+                        onboardingItems.isEmpty ? 1 : onboardingItems.length),
                 InkWell(
                   onTap: () {
                     setState(() {
