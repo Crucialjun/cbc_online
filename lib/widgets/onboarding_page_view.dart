@@ -18,6 +18,9 @@ class OnboardingpageView extends StatelessWidget {
           child: PageView.builder(
               controller: pageController,
               itemCount: onboardingItems.length,
+              onPageChanged: (value) {
+                context.read<OnboardingViewModel>().updatePostion(value);
+              },
               itemBuilder: (context, index) {
                 return viewpage(onboardingItems[index].assetName,
                     onboardingItems[index].title, onboardingItems[index].text);

@@ -11,7 +11,11 @@ class OnboardingViewModel extends ChangeNotifier {
 
   final List<OnboardingData> _onboardingItems = [];
 
+  int _currentPostion = 0;
+
   List get onboardingItems => _onboardingItems;
+
+  int get currentPosition => _currentPostion;
 
   Future getItems() async {
     var listOfJsons = await rootBundle.loadString("jsons/onboarding_data.json");
@@ -23,5 +27,10 @@ class OnboardingViewModel extends ChangeNotifier {
       _onboardingItems.add(onboardItem);
       notifyListeners();
     }
+  }
+
+  void updatePostion(int postion) {
+    _currentPostion = postion;
+    notifyListeners();
   }
 }
