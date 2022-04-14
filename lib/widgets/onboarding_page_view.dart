@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../viewmodels/onboarding_viewmodel.dart';
@@ -34,13 +35,16 @@ class OnboardingpageView extends StatelessWidget {
       child: Column(children: [
         Expanded(
           child: Image.asset(
-            "gifs/$asset.gif",
+            "assets/gifs/$asset.gif",
           ),
         ),
         Text(
           title,
-          style: const TextStyle(
-              color: Colors.black, fontSize: 36, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.black,
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+              fontFamily: GoogleFonts.cabin().fontFamily),
         ),
         const SizedBox(
           height: 8,

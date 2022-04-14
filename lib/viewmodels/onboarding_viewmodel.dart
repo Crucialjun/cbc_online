@@ -18,12 +18,12 @@ class OnboardingViewModel extends ChangeNotifier {
   int get currentPosition => _currentPostion;
 
   Future getItems() async {
-    var listOfJsons = await rootBundle.loadString("jsons/onboarding_data.json");
+    var listOfJsons =
+        await rootBundle.loadString("assets/jsons/onboarding_data.json");
     List decodedJson = jsonDecode(listOfJsons);
 
     for (var i = 0; i < decodedJson.length; i++) {
       var onboardItem = OnboardingData.fromJson(decodedJson[i]);
-      print(decodedJson[i]);
       _onboardingItems.add(onboardItem);
       notifyListeners();
     }
