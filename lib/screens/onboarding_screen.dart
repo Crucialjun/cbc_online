@@ -52,11 +52,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               : onboardingItems.length),
                       InkWell(
                         onTap: () {
-                          setState(() {
-                            _pageController.nextPage(
-                                duration: const Duration(milliseconds: 400),
-                                curve: Curves.easeIn);
-                          });
+                          _pageController.nextPage(
+                              duration: const Duration(milliseconds: 400),
+                              curve: Curves.easeIn);
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -94,11 +92,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         children: [
                           InkWell(
                             onTap: () {
-                              setState(() {
-                                _pageController.previousPage(
-                                    duration: const Duration(milliseconds: 400),
-                                    curve: Curves.easeIn);
-                              });
+                              _pageController.previousPage(
+                                  duration: const Duration(milliseconds: 400),
+                                  curve: Curves.easeIn);
                             },
                             child: Container(
                               decoration: BoxDecoration(
