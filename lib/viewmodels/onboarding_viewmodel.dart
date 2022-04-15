@@ -34,4 +34,16 @@ class OnboardingViewModel extends ChangeNotifier {
     _currentPostion = postion;
     notifyListeners();
   }
+
+  void moveForward(PageController pageController) {
+    pageController.nextPage(
+        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+    notifyListeners();
+  }
+
+  void moveBack(PageController pageController) {
+    pageController.previousPage(
+        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+    notifyListeners();
+  }
 }
