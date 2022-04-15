@@ -1,4 +1,5 @@
 import 'package:cbc_online/app_colors.dart';
+import 'package:cbc_online/global_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -200,7 +201,9 @@ class OnboardingScreen extends StatelessWidget {
                           )
                         : Center(
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushReplacementNamed(context, signUpPath);
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: appPrimaryColor,

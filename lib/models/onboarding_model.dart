@@ -26,7 +26,7 @@ class OnboardingData {
 
   Map<String, dynamic> toMap() {
     return {
-      onboradingAssetName: assetName,
+      onboardingAssetName: assetName,
       onboardingTitle: title,
       onboardingText: text,
     };
@@ -34,7 +34,7 @@ class OnboardingData {
 
   factory OnboardingData.fromMap(Map<String, dynamic> map) {
     return OnboardingData(
-      assetName: map[onboradingAssetName] ?? '',
+      assetName: map[onboardingAssetName] ?? '',
       title: map[onboardingTitle] ?? '',
       text: map[onboardingText] ?? '',
     );
@@ -44,7 +44,7 @@ class OnboardingData {
 
   factory OnboardingData.fromJson(Map<String, dynamic> json) {
     return OnboardingData(
-      assetName: json[onboradingAssetName] ?? '',
+      assetName: json[onboardingAssetName] ?? '',
       title: json[onboardingTitle] ?? '',
       text: json[onboardingText] ?? '',
     );

@@ -38,11 +38,26 @@ class $AssetsJsonsGen {
   String get onboardingData => 'assets/jsons/onboarding_data.json';
 }
 
+class $AssetsPngsGen {
+  const $AssetsPngsGen();
+
+  /// File path: assets/pngs/facebook.png
+  AssetGenImage get facebook => const AssetGenImage('assets/pngs/facebook.png');
+
+  /// File path: assets/pngs/facebooktwo.png
+  AssetGenImage get facebooktwo =>
+      const AssetGenImage('assets/pngs/facebooktwo.png');
+
+  /// File path: assets/pngs/google.png
+  AssetGenImage get google => const AssetGenImage('assets/pngs/google.png');
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsGifsGen gifs = $AssetsGifsGen();
   static const $AssetsJsonsGen jsons = $AssetsJsonsGen();
+  static const $AssetsPngsGen pngs = $AssetsPngsGen();
 }
 
 class AssetGenImage extends AssetImage {

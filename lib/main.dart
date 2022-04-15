@@ -1,5 +1,6 @@
 import 'package:cbc_online/global_constants.dart';
 import 'package:cbc_online/screens/onboarding_screen.dart';
+import 'package:cbc_online/screens/sign_up.dart';
 import 'package:cbc_online/viewmodels/onboarding_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,9 +26,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: appName,
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
           fontFamily: GoogleFonts.cabin().fontFamily),
-      home: const OnboardingScreen(),
+      initialRoute: onboardingPath,
+      routes: {
+        onboardingPath: (context) => const OnboardingScreen(),
+        signUpPath: (context) => const SignUpScreen()
+      },
     );
   }
 }
