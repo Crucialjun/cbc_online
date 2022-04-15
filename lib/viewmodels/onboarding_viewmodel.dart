@@ -46,4 +46,9 @@ class OnboardingViewModel extends ChangeNotifier {
         duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
     notifyListeners();
   }
+
+  void movetoLast(PageController pageController, int pageNumber) {
+    pageController.jumpToPage(pageNumber);
+    notifyListeners();
+  }
 }

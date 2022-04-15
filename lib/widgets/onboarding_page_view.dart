@@ -13,20 +13,18 @@ class OnboardingpageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List onboardingItems = context.watch<OnboardingViewModel>().onboardingItems;
-    return Container(
-      child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: PageView.builder(
-              controller: pageController,
-              itemCount: onboardingItems.length,
-              onPageChanged: (value) {
-                context.read<OnboardingViewModel>().updatePostion(value);
-              },
-              itemBuilder: (context, index) {
-                return viewpage(onboardingItems[index].assetName,
-                    onboardingItems[index].title, onboardingItems[index].text);
-              })),
-    );
+    return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: PageView.builder(
+            controller: pageController,
+            itemCount: onboardingItems.length,
+            onPageChanged: (value) {
+              context.read<OnboardingViewModel>().updatePostion(value);
+            },
+            itemBuilder: (context, index) {
+              return viewpage(onboardingItems[index].assetName,
+                  onboardingItems[index].title, onboardingItems[index].text);
+            }));
   }
 
   Container viewpage(String asset, String title, String text) {
