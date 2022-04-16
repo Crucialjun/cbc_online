@@ -36,16 +36,48 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                const Text(
-                  "Your Full Name",
-                  style: TextStyle(fontSize: 18),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                TextFormField(
-                  decoration:
-                      const TextFormDecorator(hintString: "Christopher Henry"),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Your First Name",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          TextFormField(
+                            decoration:
+                                const TextFormDecorator(hintString: "John"),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Your Last Name",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          TextFormField(
+                            decoration:
+                                const TextFormDecorator(hintString: "Doe"),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 8,
