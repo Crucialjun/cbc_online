@@ -1,6 +1,7 @@
 import 'package:cbc_online/app_colors.dart';
 import 'package:cbc_online/global_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -17,40 +18,52 @@ class OnboardingScreen extends StatelessWidget {
     int currentPostion = context.watch<OnboardingViewModel>().currentPosition;
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          actions: [
+            currentPostion != onboardingItems.length - 1
+                ? Align(
+                    alignment: Alignment.centerRight,
+                    child: InkWell(
+                      onTap: () {
+                        if (currentPostion < onboardingItems.length - 1) {
+                          context.read<OnboardingViewModel>().movetoLast(
+                              _pageController, onboardingItems.length);
+                        }
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.only(right: 18.0),
+                        child: Text(
+                          "Skip",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ))
+                : const Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 16.0),
+                      child: Text(
+                        "",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    )),
+          ],
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Colors.white,
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.dark),
+        ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                currentPostion != onboardingItems.length - 1
-                    ? Align(
-                        alignment: Alignment.centerRight,
-                        child: InkWell(
-                          onTap: () {
-                            if (currentPostion < onboardingItems.length - 1) {
-                              context.read<OnboardingViewModel>().movetoLast(
-                                  _pageController, onboardingItems.length);
-                            }
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Text(
-                              "Skip",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ))
-                    : const Align(
-                        alignment: Alignment.centerRight,
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Text(
-                            "",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                        )),
                 Expanded(
                     child: OnboardingpageView(
                   pageController: _pageController,
@@ -152,7 +165,7 @@ class OnboardingScreen extends StatelessWidget {
                               ),
                               SmoothPageIndicator(
                                   effect: const SlideEffect(
-                                      activeDotColor: appPrimaryColor),
+                                      activeDotColor: Colors.red),
                                   controller: _pageController,
                                   count: onboardingItems.isEmpty
                                       ? 1
@@ -165,7 +178,7 @@ class OnboardingScreen extends StatelessWidget {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: appPrimaryColor,
+                                      color: Colors.red,
                                       borderRadius: BorderRadius.circular(4)),
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -202,7 +215,8 @@ class OnboardingScreen extends StatelessWidget {
                         : Center(
                             child: InkWell(
                               onTap: () {
-                                Navigator.pushReplacementNamed(context, signUpPath);
+                                Navigator.pushReplacementNamed(
+                                    context, signUpPath);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
