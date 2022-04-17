@@ -25,9 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appName,
-      theme: ThemeData(
-          primarySwatch: Colors.red,
-          fontFamily: GoogleFonts.cabin().fontFamily),
+      theme: ThemeData(fontFamily: GoogleFonts.aBeeZee().fontFamily),
       initialRoute: onboardingPath,
       routes: {
         onboardingPath: (context) => const OnboardingScreen(),

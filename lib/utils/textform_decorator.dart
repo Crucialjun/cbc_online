@@ -33,5 +33,5 @@ class TextFormDecorator extends InputDecoration {
 
   @override
   TextStyle? get hintStyle =>
-      TextStyle(color: Colors.redAccent.withOpacity(0.4));
+      TextStyle(color: appPrimaryColor.withOpacity(0.4));
 }
