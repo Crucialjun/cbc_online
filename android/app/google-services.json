@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "637317927011",
+    "project_id": "cbc-online-e9847",
+    "storage_bucket": "cbc-online-e9847.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637317927011:android:1fe0186963c4e7d416e856",
+        "android_client_info": {
+          "package_name": "com.example.cbc_online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637317927011-5vni82foc7e8g9bjgnqrbnr9v5p58h3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqDcKEtZpeO0txL504ODTSpRjuVjPZNl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637317927011-5vni82foc7e8g9bjgnqrbnr9v5p58h3u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
