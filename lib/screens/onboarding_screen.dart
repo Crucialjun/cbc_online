@@ -1,4 +1,3 @@
-import 'package:cbc_online/app_colors.dart';
 import 'package:cbc_online/global_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -76,8 +75,8 @@ class OnboardingScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SmoothPageIndicator(
-                              effect: const SlideEffect(
-                                  activeDotColor: appPrimaryColor),
+                              effect:
+                                  const SlideEffect(activeDotColor: Colors.red),
                               controller: _pageController,
                               count: onboardingItems.isEmpty
                                   ? 1
@@ -90,7 +89,7 @@ class OnboardingScreen extends StatelessWidget {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: appPrimaryColor,
+                                  color: Colors.red,
                                   borderRadius: BorderRadius.circular(4)),
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -131,7 +130,7 @@ class OnboardingScreen extends StatelessWidget {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: appPrimaryColor,
+                                      color: Colors.red,
                                       borderRadius: BorderRadius.circular(4)),
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -220,7 +219,7 @@ class OnboardingScreen extends StatelessWidget {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: appPrimaryColor,
+                                    color: Colors.red,
                                     borderRadius: BorderRadius.circular(8)),
                                 child: const Padding(
                                   padding: EdgeInsets.only(
