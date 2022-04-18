@@ -6,26 +6,39 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    MultiProvider(providers: [
-      ChangeNotifierProvider(
-        create: (_) => OnboardingViewModel(),
-      )
-    ], child: const MyApp()),
+    MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => OnboardingViewModel(),
+          )
+        ],
+        child: MyApp(
+          prefs: prefs,
+        )),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key, required this.prefs}) : super(key: key);
 
+  final SharedPreferences prefs;
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
