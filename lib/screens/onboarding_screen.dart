@@ -1,4 +1,5 @@
 import 'package:cbc_online/global_constants.dart';
+import 'package:cbc_online/viewmodels/splash_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -214,6 +215,9 @@ class OnboardingScreen extends StatelessWidget {
                         : Center(
                             child: InkWell(
                               onTap: () {
+                                context
+                                    .read<SplashViewModel>()
+                                    .updateFirstTime();
                                 Navigator.pushReplacementNamed(
                                     context, signUpPath);
                               },

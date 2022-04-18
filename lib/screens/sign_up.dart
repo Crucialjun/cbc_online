@@ -3,6 +3,7 @@ import 'package:cbc_online/gen/assets.gen.dart';
 import 'package:cbc_online/utils/buttons_decoration.dart';
 import 'package:cbc_online/utils/textform_decorator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -11,6 +12,15 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          toolbarHeight: 0.0,
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Colors.white,
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.dark)),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 24.0, right: 24.0),

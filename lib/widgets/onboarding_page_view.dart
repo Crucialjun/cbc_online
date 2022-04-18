@@ -16,6 +16,7 @@ class OnboardingpageView extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(16.0),
         child: PageView.builder(
+            scrollBehavior: const ScrollBehavior(),
             controller: pageController,
             itemCount: onboardingItems.length,
             onPageChanged: (value) {
