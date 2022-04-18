@@ -1,7 +1,8 @@
+import 'package:cbc_online/firebase/firebase_provider.dart';
 import 'package:cbc_online/global_constants.dart';
+import 'package:cbc_online/screens/homescreen.dart';
 import 'package:cbc_online/screens/onboarding_screen.dart';
 import 'package:cbc_online/screens/sign_up.dart';
-import 'package:cbc_online/screens/splash_screen.dart';
 import 'package:cbc_online/viewmodels/onboarding_viewmodel.dart';
 import 'package:cbc_online/viewmodels/splash_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,9 +13,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
 
+bool isBoarded = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  isBoarded = prefs.getBool("onboarding") ?? false;
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -25,15 +28,17 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (_) => SplashViewModel(),
-      )
+      ),
+      ChangeNotifierProvider(create: (_) => FirebaseProvider()),
+      StreamProvider(
+          create: (context) => context.watch<FirebaseProvider>().authState,
+          initialData: null)
     ], child: const MyApp()),
   );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key, required this.prefs}) : super(key: key);
-
-  final SharedPreferences prefs;
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -47,11 +52,11 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: appName,
       theme: ThemeData(fontFamily: GoogleFonts.aBeeZee().fontFamily),
-      initialRoute: splashPath,
+      initialRoute: isBoarded ? signUpPath : onboardingPath,
       routes: {
-        splashPath: (context) => const SplashScreen(),
         onboardingPath: (context) => const OnboardingScreen(),
-        signUpPath: (context) => const SignUpScreen()
+        signUpPath: (context) => const SignUpScreen(),
+        homepagePath: (context) => const HomepageScreen()
       },
     );
   }

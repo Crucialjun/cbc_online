@@ -16,7 +16,7 @@ class SplashViewModel extends ChangeNotifier {
 
   void updateFirstTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool("isFirstTime", false);
+    prefs.setBool("onboarding", true);
     notifyListeners();
   }
 }

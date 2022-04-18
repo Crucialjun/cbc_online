@@ -1,10 +1,13 @@
 import 'package:cbc_online/app_colors.dart';
+import 'package:cbc_online/firebase/firebase_provider.dart';
 import 'package:cbc_online/gen/assets.gen.dart';
+import 'package:cbc_online/global_constants.dart';
 import 'package:cbc_online/utils/buttons_decoration.dart';
 import 'package:cbc_online/utils/textform_decorator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -33,7 +36,15 @@ class SignUpScreen extends StatelessWidget {
                   Align(
                       alignment: Alignment.centerRight,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () async {
+                          bool success = await context
+                              .read<FirebaseProvider>()
+                              .signInAnonymously(context);
+                          if (success) {
+                            Navigator.pushReplacementNamed(
+                                context, homepagePath);
+                          }
+                        },
                         child: const Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Text(

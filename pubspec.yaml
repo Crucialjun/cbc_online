@@ -40,6 +40,8 @@ dependencies:
   flutter_gen_runner: ^4.1.6
   firebase_core: ^1.14.1
   shared_preferences: ^2.0.13
+  firebase_auth: ^3.3.14
+  awesome_dialog: ^2.2.0
 
 dev_dependencies:
   build_runner:
