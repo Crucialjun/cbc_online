@@ -10,6 +10,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsGifsGen {
   const $AssetsGifsGen();
 
+  /// File path: assets/gifs/splash.gif
+  AssetGenImage get splash => const AssetGenImage('assets/gifs/splash.gif');
+
   /// File path: assets/gifs/viewpagefive.gif
   AssetGenImage get viewpagefive =>
       const AssetGenImage('assets/gifs/viewpagefive.gif');
