@@ -5,8 +5,16 @@ class HomepageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(child: Text("Home")),
+    return Scaffold(
+      body: Container(
+        child: Center(
+            child: Column(
+          children: [
+            const Text("Home"),
+            ElevatedButton(onPressed: () {}, child: const Text("Logout"))
+          ],
+        )),
+      ),
     );
   }
 }

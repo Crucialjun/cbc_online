@@ -52,11 +52,12 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: appName,
       theme: ThemeData(fontFamily: GoogleFonts.aBeeZee().fontFamily),
-      initialRoute: isBoarded ? signUpPath : onboardingPath,
+      initialRoute: isBoarded ? authcheckPath : onboardingPath,
       routes: {
         onboardingPath: (context) => const OnboardingScreen(),
         signUpPath: (context) => const SignUpScreen(),
-        homepagePath: (context) => const HomepageScreen()
+        homepagePath: (context) => const HomepageScreen(),
+        authcheckPath: (context) => const HomepageScreen()
       },
     );
   }
