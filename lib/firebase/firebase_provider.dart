@@ -8,4 +8,8 @@ class FirebaseProvider extends ChangeNotifier {
   Future<bool> signInAnonymously(BuildContext context) {
     return FirebaseAuthMethods().signinAnonymously(context);
   }
+
+  Future<bool> signOut(BuildContext context) {
+    return FirebaseAuthMethods().signOut(context);
+  }
 }

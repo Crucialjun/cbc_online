@@ -1,4 +1,3 @@
-import 'package:cbc_online/firebase/firebase_auth_methods.dart';
 import 'package:cbc_online/firebase/firebase_provider.dart';
 import 'package:cbc_online/screens/homescreen.dart';
 import 'package:cbc_online/screens/sign_up.dart';
@@ -14,7 +13,7 @@ class AuthChecker extends StatelessWidget {
         stream: context.watch<FirebaseProvider>().authState,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
           if (!snapshot.hasData) {
             return const SignUpScreen();

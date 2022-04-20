@@ -13,4 +13,14 @@ class FirebaseAuthMethods {
       return false;
     }
   }
+
+  Future<bool> signOut(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      showErrorDialog(context, e.message.toString());
+      return false;
+    }
+  }
 }
