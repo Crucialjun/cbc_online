@@ -36,14 +36,17 @@ class SignUpScreen extends StatelessWidget {
                   Align(
                       alignment: Alignment.centerRight,
                       child: InkWell(
-                        onTap: () async {
-                          bool success = await context
+                        onTap: () {
+                          Future<bool> success = context
                               .read<FirebaseProvider>()
                               .signInAnonymously(context);
-                          if (success) {
-                            Navigator.pushReplacementNamed(
-                                context, homepagePath);
-                          }
+                          success.then((value) => {
+                                if (value)
+                                  {
+                                    Navigator.pushReplacementNamed(
+                                        context, homepagePath)
+                                  }
+                              });
                         },
                         child: const Padding(
                           padding: EdgeInsets.all(16.0),
