@@ -1,5 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 showErrorDialog(BuildContext context, String message) {
   AwesomeDialog(
@@ -8,4 +8,21 @@ showErrorDialog(BuildContext context, String message) {
           title: "Error",
           desc: message)
       .show();
+}
+
+showLoadingDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [CircularProgressIndicator(), Text("Loading...")],
+            ),
+          ),
+        );
+      });
 }

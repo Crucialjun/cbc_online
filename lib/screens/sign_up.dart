@@ -3,6 +3,7 @@ import 'package:cbc_online/firebase/firebase_provider.dart';
 import 'package:cbc_online/gen/assets.gen.dart';
 import 'package:cbc_online/global_constants.dart';
 import 'package:cbc_online/utils/buttons_decoration.dart';
+import 'package:cbc_online/utils/show_dialogs.dart';
 import 'package:cbc_online/utils/textform_decorator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,12 +38,14 @@ class SignUpScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: InkWell(
                         onTap: () {
+                          showLoadingDialog(context);
                           Future<bool> success = context
                               .read<FirebaseProvider>()
                               .signInAnonymously(context);
                           success.then((value) => {
                                 if (value)
                                   {
+                                    Navigator.pop(context),
                                     Navigator.pushReplacementNamed(
                                         context, homepagePath)
                                   }
