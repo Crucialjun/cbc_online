@@ -1,5 +1,6 @@
 import 'package:cbc_online/firebase/firebase_provider.dart';
 import 'package:cbc_online/global_constants.dart';
+import 'package:cbc_online/providers/learner_provider.dart';
 import 'package:cbc_online/screens/homescreen.dart';
 import 'package:cbc_online/screens/onboarding_screen.dart';
 import 'package:cbc_online/screens/sign_up.dart';
@@ -29,6 +30,9 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (_) => SplashViewModel(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => LearnerProvider(),
       ),
       ChangeNotifierProvider(create: (_) => FirebaseProvider()),
       StreamProvider(

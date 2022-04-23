@@ -15,12 +15,18 @@ showLoadingDialog(BuildContext context) {
       context: context,
       builder: (context) {
         return Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           body: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [CircularProgressIndicator(), Text("Loading...")],
+              children: const [
+                CircularProgressIndicator(),
+                SizedBox(
+                  height: 24,
+                ),
+                Text("Loading...")
+              ],
             ),
           ),
         );
