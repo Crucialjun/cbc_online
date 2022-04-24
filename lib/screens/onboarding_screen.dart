@@ -1,3 +1,4 @@
+import 'package:cbc_online/app_colors.dart';
 import 'package:cbc_online/global_constants.dart';
 import 'package:cbc_online/viewmodels/splash_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +9,24 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../viewmodels/onboarding_viewmodel.dart';
 import '../widgets/onboarding_page_view.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController _pageController = PageController();
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final PageController _pageController = PageController();
     List onboardingItems = context.watch<OnboardingViewModel>().onboardingItems;
     int currentPostion = context.watch<OnboardingViewModel>().currentPosition;
     return Scaffold(
@@ -76,8 +89,8 @@ class OnboardingScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SmoothPageIndicator(
-                              effect:
-                                  const SlideEffect(activeDotColor: Colors.red),
+                              effect: const SlideEffect(
+                                  activeDotColor: appPrimaryColor),
                               controller: _pageController,
                               count: onboardingItems.isEmpty
                                   ? 1
@@ -90,7 +103,7 @@ class OnboardingScreen extends StatelessWidget {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                  color: Colors.red,
+                                  color: appPrimaryColor,
                                   borderRadius: BorderRadius.circular(4)),
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -131,7 +144,7 @@ class OnboardingScreen extends StatelessWidget {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.red,
+                                      color: appPrimaryColor,
                                       borderRadius: BorderRadius.circular(4)),
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -165,7 +178,7 @@ class OnboardingScreen extends StatelessWidget {
                               ),
                               SmoothPageIndicator(
                                   effect: const SlideEffect(
-                                      activeDotColor: Colors.red),
+                                      activeDotColor: appPrimaryColor),
                                   controller: _pageController,
                                   count: onboardingItems.isEmpty
                                       ? 1
@@ -178,7 +191,7 @@ class OnboardingScreen extends StatelessWidget {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.red,
+                                      color: appPrimaryColor,
                                       borderRadius: BorderRadius.circular(4)),
                                   child: Padding(
                                     padding: const EdgeInsets.only(
@@ -223,7 +236,7 @@ class OnboardingScreen extends StatelessWidget {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.red,
+                                    color: appPrimaryColor,
                                     borderRadius: BorderRadius.circular(8)),
                                 child: const Padding(
                                   padding: EdgeInsets.only(

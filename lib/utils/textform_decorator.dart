@@ -1,4 +1,3 @@
-import 'package:cbc_online/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class TextFormDecorator extends InputDecoration {
@@ -7,25 +6,28 @@ class TextFormDecorator extends InputDecoration {
   final String hintString;
 
   @override
-  TextStyle? get labelStyle =>
-      const TextStyle(color: appPrimaryColor, fontWeight: FontWeight.w600);
+  Color? get fillColor => Colors.grey[300];
 
   @override
-  Color? get fillColor => Colors.white;
+  bool? get filled => true;
+
+  @override
+  TextStyle? get labelStyle =>
+      const TextStyle(color: Colors.black, fontWeight: FontWeight.w600);
 
   @override
   InputBorder? get border => OutlineInputBorder(
-      borderSide: const BorderSide(color: appPrimaryColor, width: 1.0),
+      borderSide: const BorderSide(color: Colors.blue, width: 1.0),
       borderRadius: BorderRadius.circular(12.0));
 
   @override
   InputBorder? get enabledBorder => OutlineInputBorder(
-      borderSide: const BorderSide(color: appPrimaryColor, width: 1.0),
+      borderSide: const BorderSide(color: Colors.black, width: 0.8),
       borderRadius: BorderRadius.circular(12.0));
 
   @override
   InputBorder? get focusedBorder => OutlineInputBorder(
-      borderSide: const BorderSide(color: appPrimaryColor, width: 1.0),
+      borderSide: const BorderSide(color: Colors.blue, width: 1.0),
       borderRadius: BorderRadius.circular(12.0));
 
   @override
@@ -33,5 +35,5 @@ class TextFormDecorator extends InputDecoration {
 
   @override
   TextStyle? get hintStyle =>
-      TextStyle(color: appPrimaryColor.withOpacity(0.4));
+      const TextStyle(color: Color.fromARGB(255, 167, 165, 165));
 }

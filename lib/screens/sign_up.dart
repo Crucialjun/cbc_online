@@ -8,15 +8,38 @@ import 'package:cbc_online/utils/textform_decorator.dart';
 import 'package:cbc_online/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 0.0,
@@ -104,6 +127,7 @@ class SignUpScreen extends StatelessWidget {
                               height: 8,
                             ),
                             TextFormField(
+                              controller: _firstNameController,
                               validator: ((value) => firstNameValidator(value)),
                               decoration:
                                   const TextFormDecorator(hintString: "John"),
@@ -126,6 +150,8 @@ class SignUpScreen extends StatelessWidget {
                               height: 8,
                             ),
                             TextFormField(
+                              controller: _lastNameController,
+                              validator: (value) => lastNameValidator(value),
                               decoration:
                                   const TextFormDecorator(hintString: "Doe"),
                             ),
@@ -145,6 +171,8 @@ class SignUpScreen extends StatelessWidget {
                     height: 8,
                   ),
                   TextFormField(
+                    controller: _emailController,
+                    validator: (value) => emailValidator(value),
                     decoration: const TextFormDecorator(
                         hintString: "yourname@email.com"),
                   ),
@@ -159,8 +187,18 @@ class SignUpScreen extends StatelessWidget {
                     height: 8,
                   ),
                   TextFormField(
+                    controller: _passwordController,
                     decoration: const TextFormDecorator(hintString: "********"),
                   ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  FlutterPwValidator(
+                      width: 400,
+                      height: 30,
+                      minLength: 6,
+                      onSuccess: () {},
+                      controller: _passwordController),
                   const SizedBox(
                     height: 16,
                   ),
@@ -172,21 +210,27 @@ class SignUpScreen extends StatelessWidget {
                     height: 8,
                   ),
                   TextFormField(
+                    controller: _confirmPasswordController,
                     decoration: const TextFormDecorator(hintString: "********"),
                   ),
                   const SizedBox(
                     height: 18,
                   ),
-                  Container(
-                    decoration: ButtonsDecoration(),
-                    width: double.infinity,
-                    child: const Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Sign Up",
-                          style: TextStyle(color: Colors.white),
+                  InkWell(
+                    onTap: (() {
+                      if (_formKey.currentState!.validate()) {}
+                    }),
+                    child: Container(
+                      decoration: ButtonsDecoration(),
+                      width: double.infinity,
+                      child: const Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),

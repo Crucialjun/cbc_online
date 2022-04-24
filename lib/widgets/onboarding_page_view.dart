@@ -4,12 +4,17 @@ import 'package:provider/provider.dart';
 
 import '../viewmodels/onboarding_viewmodel.dart';
 
-class OnboardingpageView extends StatelessWidget {
+class OnboardingpageView extends StatefulWidget {
   const OnboardingpageView({Key? key, required this.pageController})
       : super(key: key);
 
   final PageController pageController;
 
+  @override
+  State<OnboardingpageView> createState() => _OnboardingpageViewState();
+}
+
+class _OnboardingpageViewState extends State<OnboardingpageView> {
   @override
   Widget build(BuildContext context) {
     List onboardingItems = context.watch<OnboardingViewModel>().onboardingItems;
@@ -17,7 +22,7 @@ class OnboardingpageView extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: PageView.builder(
             scrollBehavior: const ScrollBehavior(),
-            controller: pageController,
+            controller: widget.pageController,
             itemCount: onboardingItems.length,
             onPageChanged: (value) {
               context.read<OnboardingViewModel>().updatePosition(value);
@@ -31,19 +36,22 @@ class OnboardingpageView extends StatelessWidget {
   Container viewpage(String asset, String title, String text) {
     return Container(
       color: Colors.white,
-      child: Column(children: [
+      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         Expanded(
           child: Image.asset(
             "assets/gifs/$asset.gif",
           ),
         ),
-        Text(
-          title,
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              fontFamily: GoogleFonts.cabin().fontFamily),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            title,
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                fontFamily: GoogleFonts.cabin().fontFamily),
+          ),
         ),
         const SizedBox(
           height: 8,
