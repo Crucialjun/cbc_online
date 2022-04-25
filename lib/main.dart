@@ -5,6 +5,7 @@ import 'package:cbc_online/screens/homescreen.dart';
 import 'package:cbc_online/screens/onboarding_screen.dart';
 import 'package:cbc_online/screens/sign_up.dart';
 import 'package:cbc_online/viewmodels/onboarding_viewmodel.dart';
+import 'package:cbc_online/viewmodels/sign_up_viewmodel.dart';
 import 'package:cbc_online/viewmodels/splash_viewmodel.dart';
 import 'package:cbc_online/widgets/auth_checker.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,6 +36,7 @@ void main() async {
         create: (_) => LearnerProvider(),
       ),
       ChangeNotifierProvider(create: (_) => FirebaseProvider()),
+      ChangeNotifierProvider(create: (_) => SignupViewmodel()),
       StreamProvider(
           create: (context) => context.watch<FirebaseProvider>().authState,
           initialData: null)

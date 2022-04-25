@@ -26,3 +26,12 @@ String? emailValidator(String? value) {
   }
   return null;
 }
+
+String? confirmPassValidator(String? value, String password) {
+  if (value == null || value.isEmpty) {
+    return "Please confirm the password";
+  } else if (value != password) {
+    return "Passwords do not match";
+  }
+  return null;
+}

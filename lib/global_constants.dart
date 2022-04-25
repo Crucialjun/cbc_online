@@ -15,3 +15,6 @@ const String onboardingTableName = "Onboarding";
 const String onboardingTitle = "Title";
 const String onboardingAssetName = "AssetName";
 const String onboardingText = "Text";
+
+//Learners dats
+const String learnersTableName = "Learners";

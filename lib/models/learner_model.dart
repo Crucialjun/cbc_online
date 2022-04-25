@@ -6,6 +6,7 @@ class Learner {
   String email;
   String uid;
   String phoneNumber;
+
   Learner({
     required this.firstName,
     required this.lastName,

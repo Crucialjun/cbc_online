@@ -6,6 +6,7 @@ import 'package:cbc_online/utils/buttons_decoration.dart';
 import 'package:cbc_online/utils/show_dialogs.dart';
 import 'package:cbc_online/utils/textform_decorator.dart';
 import 'package:cbc_online/utils/validators.dart';
+import 'package:cbc_online/viewmodels/sign_up_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
@@ -40,6 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool _isPasswordValid = context.watch<SignupViewmodel>().isPasswordValid;
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 0.0,
@@ -75,6 +77,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         Navigator.pushReplacementNamed(
                                             context, homepagePath)
                                       }
+                                    else
+                                      {Navigator.pop(context)}
                                   });
                         },
                         child: const Padding(
@@ -194,10 +198,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 8,
                   ),
                   FlutterPwValidator(
+                      numericCharCount: 1,
+                      uppercaseCharCount: 1,
                       width: 400,
-                      height: 30,
+                      height: 85,
                       minLength: 6,
-                      onSuccess: () {},
+                      onSuccess: () {
+                        context.read<SignupViewmodel>().validatePassword();
+                      },
                       controller: _passwordController),
                   const SizedBox(
                     height: 16,
@@ -210,6 +218,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 8,
                   ),
                   TextFormField(
+                    validator: ((value) =>
+                        confirmPassValidator(value, _passwordController.text)),
                     controller: _confirmPasswordController,
                     decoration: const TextFormDecorator(hintString: "********"),
                   ),
@@ -218,7 +228,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   InkWell(
                     onTap: (() {
-                      if (_formKey.currentState!.validate()) {}
+                      if (_formKey.currentState!.validate() &&
+                          _isPasswordValid) {
+                        showLoadingDialog(context);
+                        context
+                            .read<SignupViewmodel>()
+                            .signup(
+                                context: context,
+                                email: _emailController.text,
+                                password: _confirmPasswordController.text,
+                                firstName: _firstNameController.text,
+                                lastName: _lastNameController.text)
+                            .then((value) => {
+                                  if (value)
+                                    {
+                                      Navigator.pop(context),
+                                      Navigator.pushReplacementNamed(
+                                          context, homepagePath)
+                                    }
+                                  else
+                                    {Navigator.pop(context)}
+                                });
+                      }
                     }),
                     child: Container(
                       decoration: ButtonsDecoration(),
