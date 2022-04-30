@@ -8,6 +8,7 @@ import 'package:cbc_online/viewmodels/onboarding_viewmodel.dart';
 import 'package:cbc_online/viewmodels/sign_up_viewmodel.dart';
 import 'package:cbc_online/viewmodels/splash_viewmodel.dart';
 import 'package:cbc_online/widgets/auth_checker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,6 +27,7 @@ void main() async {
   );
   runApp(
     MultiProvider(providers: [
+      Provider<User?>(create: (_) => FirebaseAuth.instance.currentUser),
       ChangeNotifierProvider(
         create: (_) => OnboardingViewModel(),
       ),

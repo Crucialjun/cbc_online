@@ -54,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+          padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 24.0),
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -242,7 +242,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             .then((value) => {
                                   if (value)
                                     {
-                                      Navigator.pop(context),
                                       Navigator.pushReplacementNamed(
                                           context, homepagePath)
                                     }

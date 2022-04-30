@@ -8,6 +8,10 @@ class FirebaseProvider extends ChangeNotifier {
 
   Stream<User?> get authState => FirebaseAuth.instance.authStateChanges();
 
+  final User? _firebaseUser = FirebaseAuth.instance.currentUser;
+
+  User get firebaseUser => _firebaseUser!;
+
   ViewState get viewState => _viewState;
 
   void setViewState(ViewState state) {

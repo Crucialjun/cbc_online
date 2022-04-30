@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Learner {
   String firstName;
   String lastName;
@@ -26,6 +28,17 @@ class Learner {
   }
 
   factory Learner.fromMap(Map<String, dynamic> map) {
+    return Learner(
+      firstName: map['firstName'] ?? '',
+      lastName: map['lastName'] ?? '',
+      email: map['email'] ?? '',
+      uid: map['uid'] ?? '',
+      phoneNumber: map['phoneNumber'] ?? '',
+    );
+  }
+
+  factory Learner.fromDocumentSnapshot(DocumentSnapshot snap) {
+    var map = snap.data() as Map<String, dynamic>;
     return Learner(
       firstName: map['firstName'] ?? '',
       lastName: map['lastName'] ?? '',
